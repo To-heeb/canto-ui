@@ -1,0 +1,12 @@
+- List all needed pages
+- Setup the landing page
+- Start updating the dashboard
+- 
+
+- Pages needed
+    - Dashboard
+    - Admin page on dashboard (for super admin)
+    - Admin settings
+    - Business Type
+    - Businesses
+    - Business Items

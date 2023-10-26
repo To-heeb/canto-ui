@@ -1,7 +1,7 @@
 - List all needed pages
 - Setup the landing page
 - Start updating the dashboard
-- 
+- Forget Pasowrd feature
 
 - Pages needed
     - Dashboard

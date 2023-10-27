@@ -12,7 +12,6 @@ const SPACING = 8;
 
 export default function Main({ children, sx, ...other }) {
   const lgUp = useResponsive('up', 'lg');
-
   return (
     <Box
       component="main"

@@ -1,12 +1,31 @@
-- List all needed pages
+- Create Profile Page
 - Setup the landing page
-- Start updating the dashboard
 - Forget Pasowrd feature
+_ Only Admins should have access to navbar and certain routes
+- Only super-admin should see and have access to the admin component
+_ Page to Display Individual Business
+- Add Business should open a new pag with form
+_ Business Type Can be like Admins
+- Business Type will have a popup to add Business Type, 
+  View Business details,
+  Edit Business details and Delete poup to confirm delete.
+- Business Items will be gotten from Business Individual Page
+- Add Business Item should be a popup.
+- All Business Items should be seen on the Business page
+- Add admin should be pop 
+- Update Admin for Individual Admin should be the profile Page
+_ Update Admin for Super Admin should be a popup too and disable/enable account should be a popup too.
+
 
 - Pages needed
     - Dashboard
     - Admin page on dashboard (for super admin)
-    - Admin settings
+    - Profile
     - Business Type
     - Businesses
-    - Business Items
+    - Business Items(Not a page)
+
+
+Completed
+- List all needed pages
+- Start updating the dashboard

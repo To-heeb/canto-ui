@@ -5,7 +5,8 @@ import DashboardLayout from 'src/layouts/dashboard';
 
 export const IndexPage = lazy(() => import('src/pages/app'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
-export const UserPage = lazy(() => import('src/pages/user'));
+export const BusinessesPage = lazy(() => import('src/pages/businesses'));
+export const AdminPage = lazy(() => import('src/pages/user'));
 export const LoginPage = lazy(() => import('src/pages/login'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
@@ -13,6 +14,7 @@ export const Page404 = lazy(() => import('src/pages/page-not-found'));
 // ----------------------------------------------------------------------
 
 export default function Router() {
+
   const routes = useRoutes([
     {
       element: (
@@ -24,9 +26,11 @@ export default function Router() {
       ),
       children: [
         { element: <IndexPage />, index: true },
-        { path: 'user', element: <UserPage /> },
+        { path: 'admins', element: <AdminPage /> },
         { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        // { path: 'blog', element: <BlogPage /> },
+        { path: 'businesses', element: <BusinessesPage /> },
+        { path: 'business-types', element: <BusinessesPage /> },
       ],
     },
     {

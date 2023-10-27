@@ -73,6 +73,7 @@ export default function Nav({ openNav, onCloseNav }) {
   const renderUpgrade = (
     <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
       <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
+        {/* Change Image to to a thumbs up button */}
         <Box
           component="img"
           src="/assets/illustrations/illustration_avatar.png"
@@ -80,20 +81,20 @@ export default function Nav({ openNav, onCloseNav }) {
         />
 
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h6">Get more?</Typography>
-
+          <Typography variant="h6"> Add Businesses</Typography>
+          <Typography variant="h6"> and </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
-            From only $69
+            Promote the platform
           </Typography>
         </Box>
 
         <Button
-          href="https://material-ui.com/store/items/minimal-dashboard/"
+          // href="https://material-ui.com/store/items/minimal-dashboard/"
           target="_blank"
           variant="contained"
           color="inherit"
         >
-          Upgrade to Pro
+          Admin Dashboard
         </Button>
       </Stack>
     </Box>

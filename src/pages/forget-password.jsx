@@ -1,17 +1,17 @@
 import { Helmet } from 'react-helmet-async';
 
-import { ProfileView } from 'src/sections/profile/view';
+import { ForgetPasswordView } from 'src/sections/forget-password';
 
 // ----------------------------------------------------------------------
 
-export default function ProductsPage() {
+export default function LoginPage() {
     return (
         <>
             <Helmet>
-                <title> Profile | Canto Business </title>
+                <title> Forget Password | Canto Business </title>
             </Helmet>
 
-            <ProfileView />
+            <ForgetPasswordView />
         </>
     );
 }

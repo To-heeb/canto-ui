@@ -25,17 +25,12 @@ const navConfig = [
   {
     title: 'business types',
     path: '/business-types',
-    icon: icon('ic_cart'),
+    icon: icon('ic_list'),
   },
-  // {
-  //   title: 'blog',
-  //   path: '/blog',
-  //   icon: icon('ic_blog'),
-  // },
   {
     title: 'profile',
     path: '/profile',
-    icon: icon('ic_cart'),
+    icon: icon('ic_profile'),
   }
 ];
 

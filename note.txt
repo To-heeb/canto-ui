@@ -1,11 +1,11 @@
-- Create Profile Page
+
 - Setup the landing page
-- Forget Pasowrd feature
+- Forget Password feature
 _ Only Admins should have access to navbar and certain routes
 - Only super-admin should see and have access to the admin component
 _ Page to Display Individual Business
-- Add Business should open a new pag with form
-_ Business Type Can be like Admins
+- Add Business should open a new page with form
+_ Business Type Page Can be like Admin Page
 - Business Type will have a popup to add Business Type, 
   View Business details,
   Edit Business details and Delete poup to confirm delete.
@@ -17,15 +17,16 @@ _ Business Type Can be like Admins
 _ Update Admin for Super Admin should be a popup too and disable/enable account should be a popup too.
 
 
-- Pages needed
-    - Dashboard
-    - Admin page on dashboard (for super admin)
-    - Profile
-    - Business Type
-    - Businesses
-    - Business Items(Not a page)
-
 
 Completed
 - List all needed pages
 - Start updating the dashboard
+- Create Profile Page
+
+- Pages needed
+  - Dashboard
+  - Admin page on dashboard (for super admin)
+  - Profile
+  - Business Type
+  - Businesses
+  - Business Items(Not a page)

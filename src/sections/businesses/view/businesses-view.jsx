@@ -35,7 +35,6 @@ export default function BusinessesView() {
                     ]}
                 />
             </Stack>
-            xxx
             <Grid container spacing={3}>
                 {posts.map((post, index) => (
                     <BusinessCard key={post.id} business={post} index={index} />

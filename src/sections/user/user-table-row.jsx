@@ -11,7 +11,7 @@ import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-import Label from 'src/components/label';
+// import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -20,10 +20,10 @@ export default function UserTableRow({
   selected,
   name,
   avatarUrl,
-  company,
+  email,
   role,
-  isVerified,
-  status,
+  createdAt,
+  // status,
   handleClick,
 }) {
   const [open, setOpen] = useState(null);
@@ -35,6 +35,17 @@ export default function UserTableRow({
   const handleCloseMenu = () => {
     setOpen(null);
   };
+
+
+  //  just temporarily
+  const date = new Date()
+
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  // This arrangement can be altered based on how we want the date's format to appear.
+  const currentDate = `${day}-${month}-${year}`;
 
   return (
     <>
@@ -52,15 +63,16 @@ export default function UserTableRow({
           </Stack>
         </TableCell>
 
-        <TableCell>{company}</TableCell>
+        <TableCell>{email}</TableCell>
 
         <TableCell>{role}</TableCell>
 
-        <TableCell align="center">{isVerified ? 'Yes' : 'No'}</TableCell>
+        <TableCell align="center">{currentDate}</TableCell>
+        {/* <TableCell align="center">{created_at ? 'Yes' : 'No'}</TableCell> */}
 
-        <TableCell>
+        {/* <TableCell>
           <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
-        </TableCell>
+        </TableCell> */}
 
         <TableCell align="right">
           <IconButton onClick={handleOpenMenu}>
@@ -95,11 +107,11 @@ export default function UserTableRow({
 
 UserTableRow.propTypes = {
   avatarUrl: PropTypes.any,
-  company: PropTypes.any,
+  email: PropTypes.any,
   handleClick: PropTypes.func,
-  isVerified: PropTypes.any,
+  createdAt: PropTypes.any,
   name: PropTypes.any,
   role: PropTypes.any,
   selected: PropTypes.any,
-  status: PropTypes.string,
+  // status: PropTypes.string,
 };

@@ -15,6 +15,10 @@ _ Business Type Page Can be like Admin Page
 - Add admin should be pop 
 - Update Admin for Individual Admin should be the profile Page
 _ Update Admin for Super Admin should be a popup too and disable/enable account should be a popup too.
+- Get logo for app
+- Create a link for business to be shearable and add it as database count on click of share
+- Add star to the business and count the star aggregate
+
 
 
 

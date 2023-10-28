@@ -97,10 +97,10 @@ export default function UserPage() {
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-        <Typography variant="h4">Users</Typography>
+        <Typography variant="h4">Admins</Typography>
 
         <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
-          New User
+          New Admin
         </Button>
       </Stack>
 
@@ -123,10 +123,9 @@ export default function UserPage() {
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={[
                   { id: 'name', label: 'Name' },
-                  { id: 'company', label: 'Company' },
+                  { id: 'email', label: 'Email' },
                   { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
+                  { id: 'created_at', label: 'Create At', align: 'center' },
                   { id: '' },
                 ]}
               />
@@ -138,10 +137,10 @@ export default function UserPage() {
                       key={row.id}
                       name={row.name}
                       role={row.role}
-                      status={row.status}
-                      company={row.company}
+                      // status={row.status}
+                      email={row.company}
                       avatarUrl={row.avatarUrl}
-                      isVerified={row.isVerified}
+                      createdAt={row.isVerified}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
                     />

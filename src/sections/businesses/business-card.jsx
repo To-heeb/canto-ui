@@ -9,9 +9,10 @@ import { alpha } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import { fDate } from 'src/utils/format-time';
+// import { fDate } from 'src/utils/format-time';
 import { fShortenNumber } from 'src/utils/format-number';
 
+import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
 
@@ -48,7 +49,8 @@ export default function BusinessCard({ business, index }) {
         />
     );
 
-    const renderTitle = (
+    // this will be clickable to show the full details of businesses
+    const renderName = (
         <Link
             color="inherit"
             variant="subtitle2"
@@ -65,7 +67,7 @@ export default function BusinessCard({ business, index }) {
                 }),
             }}
         >
-            {title}
+            Business Name
         </Link>
     );
 
@@ -95,6 +97,7 @@ export default function BusinessCard({ business, index }) {
                         }),
                     }}
                 >
+                    {/* only view and stars will be showed here */}
                     <Iconify width={16} icon={info.icon} sx={{ mr: 0.5 }} />
                     <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
                 </Stack>
@@ -117,7 +120,9 @@ export default function BusinessCard({ business, index }) {
         />
     );
 
-    const renderDate = (
+    // high possibility to move it in the image as tag right up
+    // this will be clickable to show the business types and they can be clicked to see businesses under them
+    const renderType = (
         <Typography
             variant="caption"
             component="div"
@@ -130,7 +135,7 @@ export default function BusinessCard({ business, index }) {
                 }),
             }}
         >
-            {fDate(createdAt)}
+            <Label color="success">business type</Label>
         </Typography>
     );
 
@@ -193,9 +198,9 @@ export default function BusinessCard({ business, index }) {
                         }),
                     }}
                 >
-                    {renderDate}
+                    {renderType}
 
-                    {renderTitle}
+                    {renderName}
 
                     {renderInfo}
                 </Box>

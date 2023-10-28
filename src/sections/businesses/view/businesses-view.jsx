@@ -18,7 +18,7 @@ export default function BusinessesView() {
     return (
         <Container>
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-                <Typography variant="h4">Businsess</Typography>
+                <Typography variant="h4">Businesses</Typography>
 
                 <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
                     Add New Business

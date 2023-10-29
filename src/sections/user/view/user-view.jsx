@@ -17,6 +17,7 @@ import Scrollbar from 'src/components/scrollbar';
 
 import TableNoData from '../table-no-data';
 import UserTableRow from '../user-table-row';
+import NewUserModal from '../new-user-modal';
 import UserTableHead from '../user-table-head';
 import TableEmptyRows from '../table-empty-rows';
 import UserTableToolbar from '../user-table-toolbar';
@@ -36,6 +37,8 @@ export default function UserPage() {
   const [filterName, setFilterName] = useState('');
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const [openModal, setOpenModal] = useState(false);
 
   const handleSort = (event, id) => {
     const isAsc = orderBy === id && order === 'asc';
@@ -92,6 +95,14 @@ export default function UserPage() {
     filterName,
   });
 
+  const handleModalOpen = (event) => {
+    setOpenModal(true)
+  }
+
+  const handleModalClose = (event) => {
+    setOpenModal(false)
+  }
+
   const notFound = !dataFiltered.length && !!filterName;
 
   return (
@@ -99,7 +110,7 @@ export default function UserPage() {
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
         <Typography variant="h4">Admins</Typography>
 
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />} onClick={handleModalOpen}>
           New Admin
         </Button>
       </Stack>
@@ -167,6 +178,8 @@ export default function UserPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Card>
+
+      <NewUserModal openStatus={openModal} handleClose={handleModalClose} />
     </Container>
   );
 }

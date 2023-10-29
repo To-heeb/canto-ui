@@ -20,7 +20,7 @@ import SvgColor from 'src/components/svg-color';
 
 export default function BusinessCard({ business, index }) {
 
-    const { cover, title, view, comment, share, author, createdAt } = business;
+    const { cover, title, view, comment, share, author } = business;
 
     // come back to use these for Ads if needed
     const latestPostLarge = index === null;

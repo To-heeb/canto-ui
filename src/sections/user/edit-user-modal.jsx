@@ -11,8 +11,6 @@ import Backdrop from '@mui/material/Backdrop';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
-import Iconify from 'src/components/iconify';
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -42,8 +40,8 @@ const role = [
 ];
 // ----------------------------------------------------------------------
 
-export default function NewUserModal({ openStatus, handleClose }) {
-    console.log(handleClose)
+export default function EditUserModal({ openStatus, handleClose }) {
+
 
     return (
         <div>
@@ -62,15 +60,9 @@ export default function NewUserModal({ openStatus, handleClose }) {
             >
                 <Fade in={openStatus}>
                     <Box sx={style}>
-                        <Stack direction="row" alignItems="right" justifyContent="space-between" mb={5}>
-                            <Typography id="transition-modal-title" variant="h6" component="h2">
-                                New Admin
-                            </Typography>
-
-                            {/* style this later */}
-                            <Iconify icon="iconoir:cancel" onClick={handleClose} />
-                        </Stack>
-
+                        <Typography id="transition-modal-title" variant="h6" component="h2">
+                            Update Admin
+                        </Typography>
 
                         <Stack component="form" sx={{
                             mt: 5,
@@ -111,7 +103,7 @@ export default function NewUserModal({ openStatus, handleClose }) {
     );
 }
 
-NewUserModal.propTypes = {
+EditUserModal.propTypes = {
     openStatus: PropTypes.bool,
     handleClose: PropTypes.func
 };

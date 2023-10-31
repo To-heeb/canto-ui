@@ -18,6 +18,7 @@ import Scrollbar from 'src/components/scrollbar';
 import TableNoData from '../table-no-data';
 import UserTableRow from '../user-table-row';
 import NewUserModal from '../new-user-modal';
+import EditUserModal from '../edit-user-modal';
 import UserTableHead from '../user-table-head';
 import TableEmptyRows from '../table-empty-rows';
 import UserTableToolbar from '../user-table-toolbar';
@@ -38,7 +39,9 @@ export default function UserPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const [openModal, setOpenModal] = useState(false);
+  const [openAddUserModal, setOpenAddUserModal] = useState(false);
+
+  const [openEditUserModal, setOpenEditUserModal] = useState(false);
 
   const handleSort = (event, id) => {
     const isAsc = orderBy === id && order === 'asc';
@@ -95,22 +98,30 @@ export default function UserPage() {
     filterName,
   });
 
-  const handleModalOpen = (event) => {
-    setOpenModal(true)
+  const handleAddUserModalOpen = (event) => {
+    setOpenAddUserModal(true)
   }
 
-  const handleModalClose = (event) => {
-    setOpenModal(false)
+  const handleAddUserModalClose = (event) => {
+    setOpenAddUserModal(false)
+  }
+
+  const handleEditUserModalOpen = (event) => {
+    setOpenEditUserModal(true)
+  }
+
+  const handleEditUserModalClose = (event) => {
+    setOpenEditUserModal(false)
   }
 
   const notFound = !dataFiltered.length && !!filterName;
 
   return (
     <Container>
-      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+      <Stack direction="row" alignItems="right" justifyContent="space-between" mb={5}>
         <Typography variant="h4">Admins</Typography>
 
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />} onClick={handleModalOpen}>
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />} onClick={handleAddUserModalOpen}>
           New Admin
         </Button>
       </Stack>
@@ -154,6 +165,7 @@ export default function UserPage() {
                       createdAt={row.isVerified}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
+                      handleOpen={handleEditUserModalOpen}
                     />
                   ))}
 
@@ -179,7 +191,8 @@ export default function UserPage() {
         />
       </Card>
 
-      <NewUserModal openStatus={openModal} handleClose={handleModalClose} />
+      <NewUserModal openStatus={openAddUserModal} handleClose={handleAddUserModalClose} />
+      <EditUserModal openStatus={openEditUserModal} handleClose={handleEditUserModalClose} />
     </Container>
   );
 }

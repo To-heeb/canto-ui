@@ -25,6 +25,7 @@ export default function UserTableRow({
   createdAt,
   // status,
   handleClick,
+  handleOpen
 }) {
   const [open, setOpen] = useState(null);
 
@@ -35,6 +36,11 @@ export default function UserTableRow({
   const handleCloseMenu = () => {
     setOpen(null);
   };
+
+  const handleClickEdit = () => {
+    handleCloseMenu()
+    handleOpen()
+  }
 
 
   //  just temporarily
@@ -91,7 +97,7 @@ export default function UserTableRow({
           sx: { width: 140 },
         }}
       >
-        <MenuItem onClick={handleCloseMenu}>
+        <MenuItem onClick={handleClickEdit}>
           <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
           Edit
         </MenuItem>
@@ -113,5 +119,6 @@ UserTableRow.propTypes = {
   name: PropTypes.any,
   role: PropTypes.any,
   selected: PropTypes.any,
+  handleOpen: PropTypes.func,
   // status: PropTypes.string,
 };

@@ -37,15 +37,16 @@ export default function UserTableRow({
 
   const handleCloseMenu = () => {
     Swal.fire({
-      title: 'Do you want to save the changes?',
-      showDenyButton: true,
+      icon: 'warning',
+      title: 'Are you sure you want to delete admin?',
+      // showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: 'Save',
+      confirmButtonText: 'Yes',
       denyButtonText: `Don't save`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success')
+        Swal.fire('Deleted!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')
       }

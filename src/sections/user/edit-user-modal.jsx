@@ -1,15 +1,19 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import { Stack } from '@mui/material';
 import Modal from '@mui/material/Modal';
+import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import MenuItem from "@mui/material/MenuItem"
 import Backdrop from '@mui/material/Backdrop';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
+import Iconify from 'src/components/iconify';
 
 const style = {
     position: 'absolute',
@@ -42,6 +46,11 @@ const role = [
 
 export default function EditUserModal({ openStatus, handleClose }) {
 
+    const [checked, setChecked] = useState(true);
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+    };
 
     return (
         <div>
@@ -60,9 +69,14 @@ export default function EditUserModal({ openStatus, handleClose }) {
             >
                 <Fade in={openStatus}>
                     <Box sx={style}>
-                        <Typography id="transition-modal-title" variant="h6" component="h2">
-                            Update Admin
-                        </Typography>
+                        <Stack direction="row" alignItems="right" justifyContent="space-between" mb={5}>
+                            <Typography id="transition-modal-title" variant="h6" component="h2">
+                                Update Admin
+                            </Typography>
+
+                            {/* style this later */}
+                            <Iconify icon="iconoir:cancel" onClick={handleClose} />
+                        </Stack>
 
                         <Stack component="form" sx={{
                             mt: 5,
@@ -89,8 +103,14 @@ export default function EditUserModal({ openStatus, handleClose }) {
                                 label="Password"
                                 type="password"
                                 autoComplete="current-password"
-                                required
                             />
+
+
+                            <FormControlLabel control={<Switch
+                                checked={checked}
+                                onChange={handleChange}
+                                inputProps={{ 'aria-label': 'controlled' }}
+                            />} label={checked ? "Account Disabled" : "Disable Account"} />
 
                             <Button variant="contained" color="inherit" >Submit</Button>
 

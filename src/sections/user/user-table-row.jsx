@@ -1,3 +1,5 @@
+
+import Swal from 'sweetalert2'
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,7 +13,7 @@ import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-// import Label from 'src/components/label';
+import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -23,7 +25,7 @@ export default function UserTableRow({
   email,
   role,
   createdAt,
-  // status,
+  status,
   handleClick,
   handleOpen
 }) {
@@ -34,6 +36,20 @@ export default function UserTableRow({
   };
 
   const handleCloseMenu = () => {
+    Swal.fire({
+      title: 'Do you want to save the changes?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
     setOpen(null);
   };
 
@@ -73,12 +89,12 @@ export default function UserTableRow({
 
         <TableCell>{role}</TableCell>
 
+        <TableCell>
+          <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
+        </TableCell>
+
         <TableCell align="center">{currentDate}</TableCell>
         {/* <TableCell align="center">{created_at ? 'Yes' : 'No'}</TableCell> */}
-
-        {/* <TableCell>
-          <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
-        </TableCell> */}
 
         <TableCell align="right">
           <IconButton onClick={handleOpenMenu}>
@@ -120,5 +136,5 @@ UserTableRow.propTypes = {
   role: PropTypes.any,
   selected: PropTypes.any,
   handleOpen: PropTypes.func,
-  // status: PropTypes.string,
+  status: PropTypes.string,
 };

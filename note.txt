@@ -1,36 +1,39 @@
 
-- Setup the landing page
-- Forget Password feature
+############# Currentlt working on ##############
+- Add Business should open a new page with form
+- Business Type will have a popup to add Business Type,
+ View Business details,
+ Edit Business details and Delete poup to confirm delete.
+- There will be sweet alert popup for confirming delete 
+- Add Business Item should be a popup.
+_ Page to Display Individual Business
+
+
+- Update Admin for Individual Admin should be the profile Page
+_ Update Admin for Super Admin should be a popup too and disable/enable account should be in popup too.
+- All Business Items should be seen on the Business page
+- Business Items will be gotten from Business Individual Page
+- Get logo for app
 _ Only Admins should have access to navbar and certain routes
 - Only super-admin should see and have access to the admin component
-_ Page to Display Individual Business
-- Add Business should open a new page with form
-_ Business Type Page Can be like Admin Page
-- Business Type will have a popup to add Business Type, 
-  View Business details,
-  Edit Business details and Delete poup to confirm delete.
-- Business Items will be gotten from Business Individual Page
-- Add Business Item should be a popup.
-- All Business Items should be seen on the Business page
-- Add admin should be pop 
-- Update Admin for Individual Admin should be the profile Page
-_ Update Admin for Super Admin should be a popup too and disable/enable account should be a popup too.
-- Get logo for app
 - Create a link for business to be shearable and add it as database count on click of share
 - Add star to the business and count the star aggregate
+- Setup the landing page
+- Forget Password feature
 
 
-
-
-Completed
+############# Completed #############
 - List all needed pages
 - Start updating the dashboard
 - Create Profile Page
+_ Business Type Page Can be like Admin Page
+- Add admin should be pop
 
-- Pages needed
-  - Dashboard
-  - Admin page on dashboard (for super admin)
-  - Profile
-  - Business Type
-  - Businesses
-  - Business Items(Not a page)
+
+############# Pages needed #############
+- Dashboard
+- Admin page on dashboard (for super admin)
+- Profile
+- Business Type
+- Businesses
+- Business Items(Not a page)

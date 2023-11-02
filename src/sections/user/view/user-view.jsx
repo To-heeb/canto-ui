@@ -147,6 +147,7 @@ export default function UserPage() {
                   { id: 'name', label: 'Name' },
                   { id: 'email', label: 'Email' },
                   { id: 'role', label: 'Role' },
+                  { id: 'status', label: 'Status' },
                   { id: 'created_at', label: 'Create At', align: 'center' },
                   { id: '' },
                 ]}
@@ -159,7 +160,7 @@ export default function UserPage() {
                       key={row.id}
                       name={row.name}
                       role={row.role}
-                      // status={row.status}
+                      status={row.status}
                       email={row.company}
                       avatarUrl={row.avatarUrl}
                       createdAt={row.isVerified}

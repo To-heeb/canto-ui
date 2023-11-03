@@ -17,7 +17,9 @@ import Scrollbar from 'src/components/scrollbar';
 
 import TableNoData from '../table-no-data';
 import TableEmptyRows from '../table-empty-rows';
+import AddBusinessTypeModal from '../add-business-type-modal';
 import BusinessTypeTableRow from '../business-type-table-row';
+import EditBusinessTypeModal from '../edit-business-type-modal';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 import BusinessTypesTableHead from '../business-types-table-head';
 import BusinessTypesTableToolbar from '../business-types-table-toolbar';
@@ -36,6 +38,10 @@ export default function BusinessTypesPage() {
     const [filterName, setFilterName] = useState('');
 
     const [rowsPerPage, setRowsPerPage] = useState(5);
+
+    const [openAddBusinessTypeModal, setOpenAddBusinessTypeModal] = useState(false);
+
+    const [openEditBusinessTypeModal, setOpenEditBusinessTypeModal] = useState(false);
 
     const handleSort = (event, id) => {
         const isAsc = orderBy === id && order === 'asc';
@@ -92,6 +98,23 @@ export default function BusinessTypesPage() {
         filterName,
     });
 
+
+    const handleAddBusinessTypeModalOpen = (event) => {
+        setOpenAddBusinessTypeModal(true)
+    }
+
+    const handleAddBusinessTypeModalClose = (event) => {
+        setOpenAddBusinessTypeModal(false)
+    }
+
+    const handleEditBusinessTypeModalOpen = (event) => {
+        setOpenEditBusinessTypeModal(true)
+    }
+
+    const handleEditBusinessTypeModalClose = (event) => {
+        setOpenEditBusinessTypeModal(false)
+    }
+
     const notFound = !dataFiltered.length && !!filterName;
 
     return (
@@ -99,7 +122,7 @@ export default function BusinessTypesPage() {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
                 <Typography variant="h4">Business Types</Typography>
 
-                <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
+                <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />} onClick={handleAddBusinessTypeModalOpen}>
                     New Business Type
                 </Button>
             </Stack>
@@ -123,10 +146,7 @@ export default function BusinessTypesPage() {
                                 onSelectAllClick={handleSelectAllClick}
                                 headLabel={[
                                     { id: 'name', label: 'Name' },
-                                    { id: 'company', label: 'Company' },
-                                    { id: 'role', label: 'Role' },
-                                    { id: 'isVerified', label: 'Verified', align: 'center' },
-                                    { id: 'status', label: 'Status' },
+                                    { id: 'description', label: 'Description' },
                                     { id: '' },
                                 ]}
                             />
@@ -144,6 +164,7 @@ export default function BusinessTypesPage() {
                                             isVerified={row.isVerified}
                                             selected={selected.indexOf(row.name) !== -1}
                                             handleClick={(event) => handleClick(event, row.name)}
+                                            handleOpenEditBusinessTypeModal={handleEditBusinessTypeModalOpen}
                                         />
                                     ))}
 
@@ -168,6 +189,9 @@ export default function BusinessTypesPage() {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Card>
+
+            <AddBusinessTypeModal openStatus={openAddBusinessTypeModal} handleClose={handleAddBusinessTypeModalClose} />
+            <EditBusinessTypeModal openStatus={openEditBusinessTypeModal} handleClose={handleEditBusinessTypeModalClose} />
         </Container>
     );
 }

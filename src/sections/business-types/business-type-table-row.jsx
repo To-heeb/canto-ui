@@ -1,17 +1,14 @@
+import Swal from 'sweetalert2'
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
 import Popover from '@mui/material/Popover';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import TableCell from '@mui/material/TableCell';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -25,6 +22,7 @@ export default function BusinessTypeTableRow({
     isVerified,
     status,
     handleClick,
+    handleOpenEditBusinessTypeModal
 }) {
     const [open, setOpen] = useState(null);
 
@@ -36,6 +34,30 @@ export default function BusinessTypeTableRow({
         setOpen(null);
     };
 
+    const handleClickEdit = () => {
+        handleCloseMenu()
+        handleOpenEditBusinessTypeModal()
+    }
+
+    const handleClickDelete = () => {
+        handleCloseMenu()
+        Swal.fire({
+            icon: 'warning',
+            title: 'Are you sure you want to delete {business_type}?',
+            // showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire('Deleted!', '', 'success')
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+    }
+
     return (
         <>
             <TableRow hover tabIndex={-1} role="checkbox" selected={selected}>
@@ -43,24 +65,12 @@ export default function BusinessTypeTableRow({
                     <Checkbox disableRipple checked={selected} onChange={handleClick} />
                 </TableCell>
 
-                <TableCell component="th" scope="row" padding="none">
-                    <Stack direction="row" alignItems="center" spacing={2}>
-                        <Avatar alt={name} src={avatarUrl} />
-                        <Typography variant="subtitle2" noWrap>
-                            {name}
-                        </Typography>
-                    </Stack>
+                <TableCell component="th" scope="row">
+                    {name}
                 </TableCell>
 
                 <TableCell>{company}</TableCell>
 
-                <TableCell>{role}</TableCell>
-
-                <TableCell align="center">{isVerified ? 'Yes' : 'No'}</TableCell>
-
-                <TableCell>
-                    <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
-                </TableCell>
 
                 <TableCell align="right">
                     <IconButton onClick={handleOpenMenu}>
@@ -79,12 +89,12 @@ export default function BusinessTypeTableRow({
                     sx: { width: 140 },
                 }}
             >
-                <MenuItem onClick={handleCloseMenu}>
+                <MenuItem onClick={handleClickEdit}>
                     <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
                     Edit
                 </MenuItem>
 
-                <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
+                <MenuItem onClick={handleClickDelete} sx={{ color: 'error.main' }}>
                     <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
                     Delete
                 </MenuItem>
@@ -102,4 +112,5 @@ BusinessTypeTableRow.propTypes = {
     role: PropTypes.any,
     selected: PropTypes.any,
     status: PropTypes.string,
+    handleOpenEditBusinessTypeModal: PropTypes.func,
 };

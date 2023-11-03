@@ -1,16 +1,11 @@
 
 ############# Currentlt working on ##############
 - Add Business should open a new page with form
-- Business Type will have a popup to add Business Type,
- View Business details,
- Edit Business details and Delete poup to confirm delete.
 - There will be sweet alert popup for confirming delete 
 - Add Business Item should be a popup.
-_ Page to Display Individual Business
-
+- Page to Display Individual Business
 
 - Update Admin for Individual Admin should be the profile Page
-_ Update Admin for Super Admin should be a popup too and disable/enable account should be in popup too.
 - All Business Items should be seen on the Business page
 - Business Items will be gotten from Business Individual Page
 - Get logo for app
@@ -37,3 +32,7 @@ _ Business Type Page Can be like Admin Page
 - Business Type
 - Businesses
 - Business Items(Not a page)
+- Update Admin for Super Admin should be a popup too and disable/enable account should be in popup too.
+- Business Type will have a popup to add Business Type,
+ View Business Type details,
+ Edit Business details and Delete poup to confirm delete.

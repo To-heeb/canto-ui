@@ -17,7 +17,7 @@ import Scrollbar from 'src/components/scrollbar';
 
 import TableNoData from '../table-no-data';
 import UserTableRow from '../user-table-row';
-import NewUserModal from '../new-user-modal';
+import AddUserModal from '../add-user-modal';
 import EditUserModal from '../edit-user-modal';
 import UserTableHead from '../user-table-head';
 import TableEmptyRows from '../table-empty-rows';
@@ -166,7 +166,7 @@ export default function UserPage() {
                       createdAt={row.isVerified}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
-                      handleOpen={handleEditUserModalOpen}
+                      handleOpenEditUserModal={handleEditUserModalOpen}
                     />
                   ))}
 
@@ -192,7 +192,7 @@ export default function UserPage() {
         />
       </Card>
 
-      <NewUserModal openStatus={openAddUserModal} handleClose={handleAddUserModalClose} />
+      <AddUserModal openStatus={openAddUserModal} handleClose={handleAddUserModalClose} />
       <EditUserModal openStatus={openEditUserModal} handleClose={handleEditUserModalClose} />
     </Container>
   );

@@ -1,4 +1,4 @@
-
+// import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
@@ -28,9 +28,10 @@ const style = {
 
 };
 
+
 // ----------------------------------------------------------------------
 
-export default function EditBusinessTypeModal({ openStatus, handleClose }) {
+export default function AddBusinessTypeModal({ openStatus, handleClose }) {
 
     return (
         <div>
@@ -51,12 +52,13 @@ export default function EditBusinessTypeModal({ openStatus, handleClose }) {
                     <Box sx={style}>
                         <Stack direction="row" alignItems="right" justifyContent="space-between" mb={5}>
                             <Typography id="transition-modal-title" variant="h6" component="h2">
-                                Update Business Type
+                                New Business Type
                             </Typography>
 
                             {/* style this later */}
                             <Iconify icon="iconoir:cancel" onClick={handleClose} />
                         </Stack>
+
 
                         <Stack component="form" sx={{
                             mt: 5,
@@ -74,7 +76,7 @@ export default function EditBusinessTypeModal({ openStatus, handleClose }) {
     );
 }
 
-EditBusinessTypeModal.propTypes = {
+AddBusinessTypeModal.propTypes = {
     openStatus: PropTypes.bool,
     handleClose: PropTypes.func
 };

@@ -27,7 +27,7 @@ export default function UserTableRow({
   createdAt,
   status,
   handleClick,
-  handleOpen
+  handleOpenEditUserModal
 }) {
   const [open, setOpen] = useState(null);
 
@@ -36,9 +36,19 @@ export default function UserTableRow({
   };
 
   const handleCloseMenu = () => {
+    setOpen(null);
+  };
+
+  const handleClickEdit = () => {
+    handleCloseMenu()
+    handleOpenEditUserModal()
+  }
+
+  const handleClickDelete = () => {
+    handleCloseMenu()
     Swal.fire({
       icon: 'warning',
-      title: 'Are you sure you want to delete admin?',
+      title: 'Are you sure you want to delete {admin_name} from admin?',
       // showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: 'Yes',
@@ -51,12 +61,6 @@ export default function UserTableRow({
         Swal.fire('Changes are not saved', '', 'info')
       }
     })
-    setOpen(null);
-  };
-
-  const handleClickEdit = () => {
-    handleCloseMenu()
-    handleOpen()
   }
 
 
@@ -119,7 +123,7 @@ export default function UserTableRow({
           Edit
         </MenuItem>
 
-        <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
+        <MenuItem onClick={handleClickDelete} sx={{ color: 'error.main' }}>
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
           Delete
         </MenuItem>
@@ -136,6 +140,6 @@ UserTableRow.propTypes = {
   name: PropTypes.any,
   role: PropTypes.any,
   selected: PropTypes.any,
-  handleOpen: PropTypes.func,
+  handleOpenEditUserModal: PropTypes.func,
   status: PropTypes.string,
 };

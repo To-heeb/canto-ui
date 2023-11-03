@@ -46,7 +46,8 @@ const role = [
 
 export default function EditUserModal({ openStatus, handleClose }) {
 
-    const [checked, setChecked] = useState(true);
+    // default status is passed here from db
+    const [checked, setChecked] = useState(false);
 
     const handleChange = (event) => {
         setChecked(event.target.checked);

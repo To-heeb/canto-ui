@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
@@ -43,7 +43,31 @@ const role = [
 // ----------------------------------------------------------------------
 
 export default function NewUserModal({ openStatus, handleClose }) {
-    console.log(handleClose)
+    const [formData, setFormData] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        role: "regular-admin",
+        password: ""
+    })
+
+
+    const handleChange = (event) => {
+        console.log(event.target)
+        const { name, value } = event.target
+        console.log(name, value)
+        setFormData((prevFromData) => ({
+            ...prevFromData,
+            [name]: value,
+        }))
+
+        console.log(formData)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(formData)
+    }
 
     return (
         <div>
@@ -74,20 +98,24 @@ export default function NewUserModal({ openStatus, handleClose }) {
 
                         <Stack component="form" sx={{
                             mt: 5,
-                        }} spacing={3} direction="column" >
-                            <TextField label="First Name" id="first_name" required />
-                            <TextField label="Last Name" id="last_name" required />
-                            <TextField label="Email" id="email" required />
+                        }} spacing={3} direction="column"
+                            onSubmit={handleSubmit}>
+                            <TextField label="First Name" id="first_name" required onChange={handleChange} name='first_name' value={formData.first_name} />
+                            <TextField label="Last Name" id="last_name" required onChange={handleChange} name='last_name' value={formData.last_name} />
+                            <TextField label="Email" id="email" required onChange={handleChange} name='email' value={formData.email} />
                             <TextField
                                 id="role"
                                 select
                                 required
+                                name='role'
+                                value={formData.role}
+                                onChange={handleChange}
                                 label="Role"
                                 defaultValue="regular-admin"
                                 helperText="Please select admin role"
                             >
                                 {role.map((option) => (
-                                    <MenuItem key={option.value} value={option.value}>
+                                    <MenuItem key={option.value} value={option.value} selected={formData.role === option.value}>
                                         {option.label}
                                     </MenuItem>
                                 ))}
@@ -96,11 +124,12 @@ export default function NewUserModal({ openStatus, handleClose }) {
                                 id="outlined-password-input"
                                 label="Password"
                                 type="password"
-                                autoComplete="current-password"
+                                name="password"
                                 required
+                                onChange={handleChange}
                             />
 
-                            <Button variant="contained" color="inherit" >Submit</Button>
+                            <Button variant="contained" color="inherit" type='submit'>Submit</Button>
 
                         </Stack>
 

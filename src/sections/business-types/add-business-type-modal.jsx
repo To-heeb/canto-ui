@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
@@ -18,7 +19,7 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: { xs: '95%', md: '40%', },
-    height: { xs: '70%', md: '65%', lg: '33%' },
+    height: { xs: '60%', md: '65%', lg: '45%' },
     bgcolor: 'background.paper',
     borderRadius: 3,
     boxShadow: 24,
@@ -32,6 +33,29 @@ const style = {
 // ----------------------------------------------------------------------
 
 export default function AddBusinessTypeModal({ openStatus, handleClose }) {
+
+    const [formData, setFormData] = useState({
+        name: "",
+        description: ""
+    })
+
+
+    const handleChange = (event) => {
+        console.log(event.target)
+        const { name, value } = event.target
+        console.log(name, value)
+        setFormData((prevFromData) => ({
+            ...prevFromData,
+            [name]: value,
+        }))
+
+        console.log(formData)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(formData)
+    }
 
     return (
         <div>
@@ -62,10 +86,10 @@ export default function AddBusinessTypeModal({ openStatus, handleClose }) {
 
                         <Stack component="form" sx={{
                             mt: 5,
-                        }} spacing={3} direction="column" >
-                            <TextField label="Name" id="name" required />
-                            <TextField label="Description" id="last_name" multiline rows={5} required />
-                            <Button variant="contained" color="inherit" >Submit</Button>
+                        }} spacing={3} direction="column" onSubmit={handleSubmit}>
+                            <TextField label="Name" id="name" name="name" value={formData.name} required onChange={handleChange} />
+                            <TextField label="Description" id="description" name='description' value={formData.description} multiline rows={5} required onChange={handleChange} />
+                            <Button variant="contained" color="inherit" type='submit'>Submit</Button>
 
                         </Stack>
 

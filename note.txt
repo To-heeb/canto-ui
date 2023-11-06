@@ -1,7 +1,6 @@
 
 ############# Currentlt working on ##############
 - Add Business should open a new page with form
-- There will be sweet alert popup for confirming delete 
 - Add Business Item should be a popup.
 - Page to Display Individual Business
 
@@ -36,3 +35,4 @@ _ Business Type Page Can be like Admin Page
 - Business Type will have a popup to add Business Type,
  View Business Type details,
  Edit Business details and Delete poup to confirm delete.
+- There will be sweet alert popup for confirming delete 

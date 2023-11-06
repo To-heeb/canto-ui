@@ -1,35 +1,30 @@
 // import Link from '@mui/material/Link';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
+// import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import { posts } from 'src/_mock/blog';
+// import { posts } from 'src/_mock/blog';
 
-import Iconify from 'src/components/iconify';
+// import Iconify from 'src/components/iconify';
 
-import BusinessCard from '../business-card';
-import BusinsessSort from '../business-sort';
-import BusinessSearch from '../business-search';
+// import BusinessCard from '../business-card';
+// import BusinsessSort from '../business-sort';
+// import BusinessSearch from '../business-search';
 
 // ----------------------------------------------------------------------
 
-export default function BusinessesView() {
+export default function AddBusinessesView() {
     return (
         <Container>
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-                <Typography variant="h4">Businesses</Typography>
-
-                <Button variant="contained" component={Link} to="/businesses/new" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
-                    Add New Business
-
-                </Button>
+                <Typography variant="h4">Add a new business</Typography>
             </Stack>
 
-            <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
+            {/* <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
                 <BusinessSearch businesses={posts} />
                 <BusinsessSort
                     options={[
@@ -43,7 +38,7 @@ export default function BusinessesView() {
                 {posts.map((post, index) => (
                     <BusinessCard key={post.id} business={post} index={index} />
                 ))}
-            </Grid>
+            </Grid> */}
         </Container>
     );
 }

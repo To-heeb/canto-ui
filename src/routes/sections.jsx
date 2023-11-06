@@ -6,6 +6,7 @@ import DashboardLayout from 'src/layouts/dashboard';
 export const IndexPage = lazy(() => import('src/pages/app'));
 export const ProfilePage = lazy(() => import('src/pages/profile'));
 export const BusinessesPage = lazy(() => import('src/pages/businesses'));
+export const AddBusinessesPage = lazy(() => import('src/pages/add-business'));
 export const BusinessTypesPage = lazy(() => import('src/pages/business-types'));
 export const AdminPage = lazy(() => import('src/pages/user'));
 export const LoginPage = lazy(() => import('src/pages/login'));
@@ -31,12 +32,24 @@ export default function Router() {
         { path: 'admins', element: <AdminPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'profile', element: <ProfilePage /> },
-        { path: 'businesses', element: <BusinessesPage /> },
+        {
+          path: 'businesses',
+          children: [
+            { element: <BusinessesPage />, index: true },
+            { path: 'new', element: <AddBusinessesPage /> },
+            { path: ':business_id', element: <AdminPage /> },
+          ]
+
+        },
         { path: 'business-types', element: <BusinessTypesPage /> },
       ],
     },
     {
       path: 'login',
+      element: <LoginPage />,
+    },
+    {
+      path: 'logout',
       element: <LoginPage />,
     },
     {

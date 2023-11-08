@@ -31,7 +31,12 @@ const navConfig = [
     title: 'profile',
     path: '/profile',
     icon: icon('ic_profile'),
-  }
+  },
+  // {
+  //   title: 'logout',
+  //   path: '/logout',
+  //   icon: icon('ic_profile'),
+  // }
 ];
 
 

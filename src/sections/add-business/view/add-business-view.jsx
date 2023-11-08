@@ -12,10 +12,10 @@ import BusinessType from '../business-type';
 import BusinessStatus from '../business-status';
 import BusinessLocation from '../business-location';
 import BusinessDescription from '../business-description';
-// import BusinessType from '../business-type';
+import BusinessWorkingHours from '../business-working-hours';
 
 // ----------------------------------------------------------------------
-
+const weekdays = ["Monday", "Tuesday", "Wwednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 export default function AddBusinessesView() {
     const [formData, setFormData] = useState({
         name: "",
@@ -23,6 +23,7 @@ export default function AddBusinessesView() {
         description: "",
         status: 1,
         type: 0,
+        working_hours: {}
     })
 
     const handleChange = (event) => {
@@ -32,10 +33,11 @@ export default function AddBusinessesView() {
             [name]: value
         }))
     }
+
     return (
         <Container>
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-                <Typography variant="h4">Add a new business</Typography>
+                <Typography variant="h4">Add new business</Typography>
             </Stack>
 
 
@@ -52,11 +54,19 @@ export default function AddBusinessesView() {
                         mt: 3,
                     }} spacing={3} direction="column" >
                         <BusinessName value={formData.name} onChange={handleChange} />
-                        <BusinessLocation />
-                        <BusinessType />
-                        <BusinessStatus />
-                        <BusinessDescription />
-                        {/* ad business working hours here */}
+                        <BusinessLocation value={formData.location} onChange={handleChange} />
+                        <BusinessType value={formData.type} onChange={handleChange} />
+                        <BusinessStatus value={formData.status} onChange={handleChange} />
+                        {weekdays.map((weekday) => (
+                            < BusinessWorkingHours
+                                key={weekday}
+                                weekday={weekday}
+                                opened_at={formData.working_hours?.[weekday]?.opened_at}
+                                closed_at={formData.working_hours?.[weekday]?.closed_at}
+                                value={formData.working_hours}
+                                onChange={handleChange} />
+                        ))}
+                        <BusinessDescription value={formData.description} onChange={handleChange} />
                         <Box sx={{
                             display: "flex",
                             justifyContent: "end"
@@ -66,8 +76,8 @@ export default function AddBusinessesView() {
                     </Stack>
 
                 </Box>
-            </Paper>
+            </Paper >
 
-        </Container>
+        </Container >
     );
 }

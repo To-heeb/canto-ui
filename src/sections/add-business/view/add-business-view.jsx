@@ -27,7 +27,10 @@ export default function AddBusinessesView() {
     })
 
     const handleChange = (event) => {
+        console.log(event)
+        console.log(event.target.name)
         const { name, value } = event.target
+        console.log(name)
         setFormData((prevFormData) => ({
             ...prevFormData,
             [name]: value

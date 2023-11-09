@@ -1,6 +1,7 @@
 
 ############# Currentlt working on ##############
 - Add Business should open a new page with form
+- Complete the form filling from it values
 - Add Business Item should be a popup.
 - Page to Display Individual Business
 

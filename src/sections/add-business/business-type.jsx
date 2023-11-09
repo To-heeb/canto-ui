@@ -1,26 +1,31 @@
+import PropTypes from 'prop-types';
+
 import { MenuItem, TextField } from "@mui/material";
 
 
 const business_types = [
     {
+        value: '0',
+        label: 'Beverage',
+    },
+    {
         value: '1',
         label: 'Provision',
     },
-    {
-        value: '0',
-        label: 'Beverage',
-    }
+
 ];
 
-export default function BusinessType() {
+export default function BusinessType({ value, onChange }) {
     return (
         <TextField
             id="type"
             name="type"
             select
             label="Type"
-            defaultValue=""
+            defaultValue=" "
             helperText="Please select business type"
+            onChange={onChange}
+            value={value}
         >
             {business_types.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -30,3 +35,8 @@ export default function BusinessType() {
         </TextField>
     )
 }
+
+BusinessType.propTypes = {
+    value: PropTypes.number,
+    onChange: PropTypes.func,
+};

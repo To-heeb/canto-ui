@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { MenuItem, TextField } from "@mui/material";
 
 
@@ -12,15 +14,17 @@ const statuses = [
     }
 ];
 
-export default function BusinessStatus() {
+export default function BusinessStatus({ value, onChange }) {
     return (
         <TextField
             id="status"
             name="status"
             select
             label="Status"
-            defaultValue="1"
+            // defaultValue="1"
             helperText="Please select business status"
+            value={value}
+            onChange={onChange}
         >
             {statuses.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -30,3 +34,10 @@ export default function BusinessStatus() {
         </TextField>
     )
 }
+
+
+
+BusinessStatus.propTypes = {
+    value: PropTypes.number,
+    onChange: PropTypes.func,
+};

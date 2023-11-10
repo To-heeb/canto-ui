@@ -15,7 +15,7 @@ import BusinessDescription from '../business-description';
 import BusinessWorkingHours from '../business-working-hours';
 
 // ----------------------------------------------------------------------
-const weekdays = ["Monday", "Tuesday", "Wwednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 export default function AddBusinessesView() {
     const [formData, setFormData] = useState({
         name: "",
@@ -35,6 +35,55 @@ export default function AddBusinessesView() {
             ...prevFormData,
             [name]: value
         }))
+    }
+
+    const handleWorkingHour = (event, dayOfWeek, label) => {
+
+        const timeFormat = formatTime(event.$H, event.$m)
+        const dayNumber = weekdays.indexOf(dayOfWeek) + 1
+        const workingHours = formData.working_hours
+
+        // console.log(dayOfWeek)
+        // console.log(dayNumber)
+        // console.log(timeFormat)
+
+        const hours = {
+            "opened_at": label === "opened_at" ? timeFormat : formData.working_hours?.[dayNumber]?.opened_at,
+            "closed_at": label === "closed_at" ? timeFormat : formData.working_hours?.[dayNumber]?.closed_at
+        }
+
+        const working_hours = {
+            [dayNumber]: hours
+        }
+
+        // console.log('before_update', workingHours)
+        console.log([...workingHours])
+
+        const newWorkingHours = {
+            ...workingHours,
+            working_hours
+        }
+
+        console.log('after_update', newWorkingHours)
+
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            working_hours: newWorkingHours
+        }))
+
+        // console.log(formData.working_hours)
+    }
+
+    console.log("working hours:", formData.working_hours)
+
+    const formatTime = (hour, minute, second = 0, millisecond = 0) => {
+        const formattedHour = hour.toString().padStart(2, '0');
+        const formattedMinute = minute.toString().padStart(2, '0');
+        const formattedSecond = second.toString().padStart(2, '0');
+        // const formattedMillisecond = millisecond.toString().padStart(3, '0');
+
+        // Creating a formatted time string
+        return `${formattedHour}:${formattedMinute}:${formattedSecond}`;
     }
 
     return (
@@ -67,7 +116,7 @@ export default function AddBusinessesView() {
                                 opened_at={formData.working_hours?.[weekday]?.opened_at}
                                 closed_at={formData.working_hours?.[weekday]?.closed_at}
                                 value={formData.working_hours}
-                                onChange={handleChange} />
+                                onChangeWorkingHour={handleWorkingHour} />
                         ))}
                         <BusinessDescription value={formData.description} onChange={handleChange} />
                         <Box sx={{

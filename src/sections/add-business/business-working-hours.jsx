@@ -8,12 +8,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-export default function BusinessWorkingHour({ weekday, opened_at, closed_at }) {
+export default function BusinessWorkingHour({ weekday, opened_at, closed_at, onChangeWorkingHour }) {
 
-    const onChange = (event, date) => {
-        console.log(date)
-        // console.log(event)
-    }
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -35,7 +31,7 @@ export default function BusinessWorkingHour({ weekday, opened_at, closed_at }) {
                     defaultValue={dayjs('2022-04-17T09:00')}
                     value={opened_at}
                     slotProps={{ textField: { fullWidth: true } }}
-                    onChange={(e, date) => { onChange(e, date) }}
+                    onChange={(e, nameOfDay, label) => { onChangeWorkingHour(e, weekday, "opened_at") }}
                 />
                 <TimePicker
                     name={weekday}
@@ -54,5 +50,5 @@ BusinessWorkingHour.propTypes = {
     weekday: PropTypes.string,
     opened_at: PropTypes.string,
     closed_at: PropTypes.string,
-    // onChange: PropTypes.func
+    onChangeWorkingHour: PropTypes.func
 };

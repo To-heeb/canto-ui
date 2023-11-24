@@ -1,0 +1,1 @@
+export { default as BusinessDetailsView } from './business-details-view';

@@ -16,6 +16,7 @@ import BusinessWorkingHours from '../business-working-hours';
 
 // ----------------------------------------------------------------------
 const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
 export default function AddBusinessesView() {
     const [formData, setFormData] = useState({
         name: "",
@@ -27,8 +28,8 @@ export default function AddBusinessesView() {
     })
 
     const handleChange = (event) => {
-        console.log(event)
-        console.log(event.target.name)
+        // console.log(event)
+        // console.log(event.target.name)
         const { name, value } = event.target
         console.log(name)
         setFormData((prevFormData) => ({
@@ -41,11 +42,7 @@ export default function AddBusinessesView() {
 
         const timeFormat = formatTime(event.$H, event.$m)
         const dayNumber = weekdays.indexOf(dayOfWeek) + 1
-        const workingHours = formData.working_hours
-
-        // console.log(dayOfWeek)
-        // console.log(dayNumber)
-        // console.log(timeFormat)
+        const currentWorkingHours = formData.working_hours
 
         const hours = {
             "opened_at": label === "opened_at" ? timeFormat : formData.working_hours?.[dayNumber]?.opened_at,
@@ -56,34 +53,34 @@ export default function AddBusinessesView() {
             [dayNumber]: hours
         }
 
-        // console.log('before_update', workingHours)
-        console.log([...workingHours])
+        // console.log(working_hours)
+        // console.log('before_update', currentWorkingHours)
 
         const newWorkingHours = {
-            ...workingHours,
-            working_hours
+            ...currentWorkingHours,
+            ...working_hours
         }
-
-        console.log('after_update', newWorkingHours)
 
         setFormData((prevFormData) => ({
             ...prevFormData,
             working_hours: newWorkingHours
         }))
 
-        // console.log(formData.working_hours)
     }
 
-    console.log("working hours:", formData.working_hours)
 
     const formatTime = (hour, minute, second = 0, millisecond = 0) => {
         const formattedHour = hour.toString().padStart(2, '0');
         const formattedMinute = minute.toString().padStart(2, '0');
         const formattedSecond = second.toString().padStart(2, '0');
-        // const formattedMillisecond = millisecond.toString().padStart(3, '0');
 
         // Creating a formatted time string
         return `${formattedHour}:${formattedMinute}:${formattedSecond}`;
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(formData)
     }
 
     return (
@@ -91,8 +88,6 @@ export default function AddBusinessesView() {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
                 <Typography variant="h4">Add new business</Typography>
             </Stack>
-
-
 
             <Paper sx={{
                 textAlign: 'center',
@@ -123,13 +118,12 @@ export default function AddBusinessesView() {
                             display: "flex",
                             justifyContent: "end"
                         }}>
-                            <Button variant="contained" color="inherit" type='submit'>Submit</Button>
+                            <Button variant="contained" color="inherit" type='submit' sx={{ py: 1.5, px: 2 }} onClick={handleSubmit}>Submit</Button>
                         </Box>
                     </Stack>
 
                 </Box>
             </Paper >
-
         </Container >
     );
 }

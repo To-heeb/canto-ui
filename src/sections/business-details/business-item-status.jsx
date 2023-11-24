@@ -14,7 +14,7 @@ const statuses = [
     }
 ];
 
-export default function BusinessStatus({ value, onChange }) {
+export default function BusinessItemStatus({ value, onChange }) {
     return (
         <TextField
             id="status"
@@ -37,7 +37,7 @@ export default function BusinessStatus({ value, onChange }) {
 
 
 
-BusinessStatus.propTypes = {
+BusinessItemStatus.propTypes = {
     value: PropTypes.number,
     onChange: PropTypes.func,
 };

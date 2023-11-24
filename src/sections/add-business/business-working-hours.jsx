@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+// import dayjs from 'dayjs';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
@@ -28,7 +28,7 @@ export default function BusinessWorkingHour({ weekday, opened_at, closed_at, onC
                 <TimePicker
                     label="Opening hour"
                     name={weekday}
-                    defaultValue={dayjs('2022-04-17T09:00')}
+                    // defaultValue={dayjs('2022-04-17T09:00')}
                     value={opened_at}
                     slotProps={{ textField: { fullWidth: true } }}
                     onChange={(e, nameOfDay, label) => { onChangeWorkingHour(e, weekday, "opened_at") }}
@@ -39,6 +39,7 @@ export default function BusinessWorkingHour({ weekday, opened_at, closed_at, onC
                     // defaultValue={dayjs('2022-04-17T17:00')}
                     value={closed_at}
                     slotProps={{ textField: { fullWidth: true } }}
+                    onChange={(e, nameOfDay, label) => { onChangeWorkingHour(e, weekday, "closed_at") }}
                 />
             </DemoContainer>
         </LocalizationProvider>

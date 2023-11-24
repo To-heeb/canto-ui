@@ -5,11 +5,15 @@ import { MenuItem, TextField } from "@mui/material";
 
 const business_types = [
     {
-        value: '0',
+        value: 0,
+        label: 'Select Type',
+    },
+    {
+        value: 1,
         label: 'Beverage',
     },
     {
-        value: '1',
+        value: 2,
         label: 'Provision',
     },
 
